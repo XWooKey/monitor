@@ -1,0 +1,40 @@
+<dataSource name="MySQL - @localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+    <schema id="1" name="ssm1">
+      <visible>1</visible>
+    </schema>
+    <schema id="2" name="crawler" />
+    <schema id="3" name="createword" />
+    <schema id="4" name="dashuju" />
+    <schema id="5" name="fkjava" />
+    <schema id="6" name="fruit" />
+    <schema id="7" name="hibernate_db" />
+    <schema id="8" name="hrsystem" />
+    <schema id="9" name="information_schema" />
+    <schema id="10" name="mem_mgr" />
+    <schema id="11" name="mysql" />
+    <schema id="12" name="nautica" />
+    <schema id="13" name="performance_schema" />
+    <schema id="14" name="qiandao" />
+    <schema id="15" name="select_test" />
+    <schema id="16" name="sp" />
+    <schema id="17" name="stiei" />
+    <schema id="18" name="testbbb" />
+    <table id="19" parent="1" name="d_user" />
+    <column id="20" parent="19" name="user_id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="21" parent="19" name="user_name">
+      <data-type>varchar(200)|0</data-type>
+    </column>
+    <column id="22" parent="19" name="user_age">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <key id="23" parent="19" name="PRIMARY">
+      <columns>user_id</columns>
+      <primary>1</primary>
+    </key>
+  </database-model>
+</dataSource>
