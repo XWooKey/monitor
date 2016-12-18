@@ -1,9 +1,9 @@
 ﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +15,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 <body class="hold-transition skin-blue sidebar-mini" style="overflow:hidden;">
     <div id="ajax-loader" style="cursor: progress; position: fixed; top: -50%; left: -50%; width: 200%; height: 200%; background: #fff; z-index: 10000; overflow: hidden;">
-        <img src="img/ajax-loader.gif" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto;" /><div class="wrapper">
+        <img src="img/ajax-loader.gif" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto;" />
+    </div>
+    <div class="wrapper">
         <!--头部信息-->
         <header class="main-header">
             <a href="http://www.learun.cn/adms/index.html" target="_blank" class="logo">
@@ -53,8 +55,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </a>
                             <ul class="dropdown-menu pull-right">
                                 <li><a class="menuItem" data-id="userInfo" href="/SystemManage/User/Info"><i class="fa fa-user"></i>个人信息</a></li>
-                                <li><a href="javascript:void();"><i class="fa fa-trash-o"></i>清空缓存</a></li>
-                                <li><a href="javascript:void();"><i class="fa fa-paint-brush"></i>皮肤设置</a></li>
+                                <li><a href="javascript:void(0);"><i class="fa fa-trash-o"></i>清空缓存</a></li>
+                                <li><a href="javascript:void(0);"><i class="fa fa-paint-brush"></i>皮肤设置</a></li>
                                 <li class="divider"></li>
                                 <li><a href="~/Login/OutLogin"><i class="ace-icon fa fa-power-off"></i>安全退出</a></li>
                             </ul>
@@ -112,10 +114,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         页签操作<i class="fa fa-caret-down" style="padding-left: 3px;"></i>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right">
-                        <li><a class="tabReload" href="javascript:void();">刷新当前</a></li>
-                        <li><a class="tabCloseCurrent" href="javascript:void();">关闭当前</a></li>
-                        <li><a class="tabCloseAll" href="javascript:void();">全部关闭</a></li>
-                        <li><a class="tabCloseOther" href="javascript:void();">除此之外全部关闭</a></li>
+                        <li><a class="tabReload" href="javascript:void(0);">刷新当前</a></li>
+                        <li><a class="tabCloseCurrent" href="javascript:void(0);">关闭当前</a></li>
+                        <li><a class="tabCloseAll" href="javascript:void(0);">全部关闭</a></li>
+                        <li><a class="tabCloseOther" href="javascript:void(0);">除此之外全部关闭</a></li>
                     </ul>
                 </div>
                 <button class="roll-nav roll-right fullscreen"><i class="fa fa-arrows-alt"></i></button>
@@ -127,8 +129,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
         </div>
     </div>
-    </div>
-    
     <script src="js/jquery/jQuery-2.2.0.min.js"></script>
     <script src="js/bootstrap/js/bootstrap.min.js"></script>
     <script src="js/index.js"></script>

@@ -20,6 +20,21 @@ public class UserEntity extends BaseEntity {
     private Date updatetime;
     private RoleEntity role;
 
+    @Override
+    public String toString() {
+        return "UserEntity{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", sex='" + sex + '\'' +
+                ", birthday='" + birthday + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", email='" + email + '\'' +
+                ", createtime=" + createtime +
+                ", updatetime=" + updatetime +
+                ", role=" + role +
+                '}';
+    }
+
     public UserEntity() {
     }
 
@@ -34,20 +49,6 @@ public class UserEntity extends BaseEntity {
         this.createtime = userEntity.getCreatetime();
         this.updatetime = userEntity.getUpdatetime();
         this.role = userEntity.getRole();
-    }
-
-
-    public UserEntity(Long id,String username, String password, String sex, String birthday, String telephone, String email, Date createtime, Date updatetime, RoleEntity role) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.sex = sex;
-        this.birthday = birthday;
-        this.telephone = telephone;
-        this.email = email;
-        this.createtime = createtime;
-        this.updatetime = updatetime;
-        this.role = role;
     }
 
     public String getUsername() {
@@ -119,6 +120,20 @@ public class UserEntity extends BaseEntity {
     }
 
     public void setRole(RoleEntity role) {
+        this.role = role;
+    }
+
+
+    public UserEntity(Long id,String username, String password, String sex, String birthday, String telephone, String email, Date createtime, Date updatetime, RoleEntity role) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.sex = sex;
+        this.birthday = birthday;
+        this.telephone = telephone;
+        this.email = email;
+        this.createtime = createtime;
+        this.updatetime = updatetime;
         this.role = role;
     }
 }

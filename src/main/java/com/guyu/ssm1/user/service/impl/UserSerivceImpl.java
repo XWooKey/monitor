@@ -21,10 +21,6 @@ public class UserSerivceImpl extends AbstractService<UserEntity,Long> implements
     @Resource
     private UserMapper userMapper;
 
-    @Resource
-    public void setBaseMapper() {
-        super.setBaseMapper(userMapper);
-    }
     /**
      * 重写用户插入，逻辑：
      * 1、插入用户

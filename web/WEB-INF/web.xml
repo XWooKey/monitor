@@ -35,19 +35,12 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
-    <!-- 处理静态资源的访问 ,这种方式效率最高,但是无法访问classpath下的资源文件 -->
+    <!-- 处理静态资源的访问 ,这种方式效率最高,但是无法访问classpath下的资源文件
     <servlet-mapping>
-        <!--
-            Tomcat, Jetty, JBoss, and GlassFish  默认 Servlet的名字  "default"
-            Google App Engine 默认 Servlet的名字  "_ah_default"
-            Resin 默认 Servlet的名字  "resin-file"
-            WebLogic 默认 Servlet的名字   "FileServlet"
-            WebSphere  默认 Servlet的名字 "SimpleFileServlet"
-        -->
         <servlet-name>default</servlet-name>
         <url-pattern>/resources/*</url-pattern>
     </servlet-mapping>
-
+    -->
     <!-- 防止Spring内存溢出监听器 -->
     <listener>
         <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>

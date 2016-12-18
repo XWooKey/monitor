@@ -1,4 +1,4 @@
-package com.guyu.ssm1.index.controller;
+package com.guyu.ssm1.user.controller;
 
 import com.guyu.ssm1.exception.AjaxException;
 import com.guyu.ssm1.exception.ServiceException;
@@ -20,7 +20,7 @@ import java.util.Map;
 @Controller
 @Scope("prototype")
 @RequestMapping("/user/")
-public class IndexController {
+public class UserController {
 
     @Autowired
     private UserService userService;
@@ -51,6 +51,8 @@ public class IndexController {
         {
             throw new AjaxException(e);
         }
+
+
         return map;
     }
 }

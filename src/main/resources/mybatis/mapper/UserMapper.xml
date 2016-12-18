@@ -26,35 +26,13 @@
     <result property="email" column="email" />
     <result property="createtime" column="createtime" />
     <result property="updatetime" column="updatetime" />
-    <association property="role" javaType="com.guyu.ssm1.role.model.RoleEntity">
+    <association property="role" javaType="com.guyu.ssm1.role.model.RoleEntity" column="id">
         <id property="id" column="id"/>
         <result property="name" column="name"/>
         <result property="description" column="description"/>
     </association>
   </resultMap>
-  <!--
-  <select id="queryListByPage" parameterType="map" resultMap="userMap" flushCache="true" useCache="true">
-    SELECT
-      u.id,
-      u.username,
-      u.password,
-      u.sex,
-      u.birthday,
-      u.telephone,
-      u.email,
-      u.creatime,
-      u.updatetime,
-      r.id,
-      r.name,
-      r.description
-    FROM tb_user u LEFT JOIN tb_user_role ur ON u.id=ur.user_id LEFT JOIN tb_role r ON ur.role_id=r.id
-    <where>
-      <if test="creatorName != null and !&quot;&quot;.equals(creatorName.trim())">
-        and u.creatorname = #{creatorName}
-      </if>
-    </where>
-  </select>
--->
+
   <select id="findByName" parameterType="String" resultMap="userMap" flushCache="true" useCache="true">
     SELECT
       u.id,
@@ -132,7 +110,7 @@
       birthday,
       telephone,
       email,
-      creatime,
+      createtime,
       updatetime
     )
     values (
@@ -142,18 +120,18 @@
       #{birthday},
       #{telephone},
       #{email},
-      #{creatorName},
-      #{createTime}
+      #{createtime},
+      #{updatetime}
     )
   </insert>
   <insert id="insertUserRole" parameterType="com.guyu.ssm1.user.model.UserEntity" useGeneratedKeys="true" keyProperty="role.id">
     insert ignore into tb_user_role (
     user_id,
-    role_id,
+    role_id
     )
     values (
-    #{user_id},
-    #{role.id},
+    #{id},
+    #{role.id}
     )
   </insert>
   <update id="update" parameterType="com.guyu.ssm1.user.model.UserEntity" flushCache="true">
