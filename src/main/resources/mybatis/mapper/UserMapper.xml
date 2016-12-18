@@ -131,7 +131,7 @@
     )
     values (
     #{id},
-    #{role.id}
+    1
     )
   </insert>
   <update id="update" parameterType="com.guyu.ssm1.user.model.UserEntity" flushCache="true">

@@ -124,12 +124,14 @@
       #{updatetime}
     )
   </insert>
-  <insert id="insertUserRole" parameterType="com.guyu.ssm1.user.model.UserEntity" useGeneratedKeys="true" keyProperty="role_id">
+  <insert id="insertUserRole" parameterType="com.guyu.ssm1.user.model.UserEntity" useGeneratedKeys="true" keyProperty="role.id">
     insert ignore into tb_user_role (
-    user_id
+    user_id,
+    role_id
     )
     values (
-    #{id}
+    #{id},
+    1
     )
   </insert>
   <update id="update" parameterType="com.guyu.ssm1.user.model.UserEntity" flushCache="true">

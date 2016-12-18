@@ -4,11 +4,13 @@ import com.guyu.ssm1.exception.AjaxException;
 import com.guyu.ssm1.exception.ServiceException;
 import com.guyu.ssm1.user.model.UserEntity;
 import com.guyu.ssm1.user.service.UserService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -21,14 +23,14 @@ import java.util.Map;
 @Scope("prototype")
 @RequestMapping("/user/")
 public class UserController {
-
+    private Logger logger = Logger.getLogger(getClass());
     @Autowired
     private UserService userService;
 
 
     @RequestMapping("add.html")
     @ResponseBody
-    public Object add(UserEntity userEntity) throws AjaxException
+    public ModelAndView add(UserEntity userEntity) throws AjaxException
     {
         Map<String, Object> map = new HashMap<String, Object>();
         try
@@ -51,8 +53,8 @@ public class UserController {
         {
             throw new AjaxException(e);
         }
-
-
-        return map;
+        logger.info(userEntity);
+        return new ModelAndView("redirect:/resources/login.jsp");
+        //return map;
     }
 }
