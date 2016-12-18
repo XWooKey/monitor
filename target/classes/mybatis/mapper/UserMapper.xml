@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guyu.ssm1.user.mapper.UserMapper">
+
+  <sql id="userAttributes">
+    id,
+    username,
+    password,
+    sex,
+    birthday,
+    telephone,
+    email,
+    creatime,
+    updatetime
+  </sql>
+
+  <!-- 解决表名与字段不匹配 -->
+  <resultMap id="userMap" type="com.guyu.ssm1.user.model.UserEntity">
+   <id property="id" column="id"/>
+    <result property="username" column="username" />
+    <result property="password" column="password" />
+    <result property="sex" column="sex" />
+    <result property="birthday" column="birthday" />
+    <result property="telephone" column="telephone" />
+    <result property="email" column="email" />
+    <result property="createtime" column="createtime" />
+    <result property="updatetime" column="updatetime" />
+    <association property="role" javaType="com.guyu.ssm1.role.model.RoleEntity">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="description" column="description"/>
+    </association>
+  </resultMap>
+  <!--
+  <select id="queryListByPage" parameterType="map" resultMap="userMap" flushCache="true" useCache="true">
+    SELECT
+      u.id,
+      u.username,
+      u.password,
+      u.sex,
+      u.birthday,
+      u.telephone,
+      u.email,
+      u.creatime,
+      u.updatetime,
+      r.id,
+      r.name,
+      r.description
+    FROM tb_user u LEFT JOIN tb_user_role ur ON u.id=ur.user_id LEFT JOIN tb_role r ON ur.role_id=r.id
+    <where>
+      <if test="creatorName != null and !&quot;&quot;.equals(creatorName.trim())">
+        and u.creatorname = #{creatorName}
+      </if>
+    </where>
+  </select>
+-->
+  <select id="findByName" parameterType="String" resultMap="userMap" flushCache="true" useCache="true">
+    SELECT
+      u.id,
+      u.username,
+      u.password,
+      u.sex,
+      u.birthday,
+      u.telephone,
+      u.email,
+      u.creatime,
+      u.updatetime,
+      r.id,
+      r.name,
+      r.description
+    FROM tb_user u JOIN tb_user_role ur ON u.id = ur.user_id JOIN tb_role r ON ur.role_id = r.id
+    <where>
+      <if test="username != null and !&quot;&quot;.equals(username.trim())">
+        and u.username = #{username}
+      </if>
+    </where>
+  </select>
+  <select id="findById" parameterType="long" resultMap="userMap" flushCache="true" useCache="true">
+  SELECT
+  u.id,
+  u.username,
+  u.password,
+  u.sex,
+  u.birthday,
+  u.telephone,
+  u.email,
+  u.creatime,
+  u.updatetime,
+  r.id,
+  r.name,
+  r.description
+  FROM tb_user u JOIN tb_user_role ur ON u.id = ur.user_id JOIN tb_role r ON ur.role_id = r.id
+    <where>
+      <if test="id != null">
+        and u.id = #{id}
+      </if>
+    </where>
+  <!-- 这种映射方式可以不用写resultMap,同时加双引号是为了mybatis可以识别映射
+      SELECT u.u_id id,
+  u.u_name userName,
+  u.u_account_name accountName,
+  u.u_password password,
+  u.u_delete_status deleteStatus,
+  u.u_locked locked,
+  u.u_description description,
+  u.u_credentials_salt credentialsSalt,
+  u.u_creator_name creatorName,
+  u.u_create_time createTime,
+  u.u_update_time updateTime,
+  r.r_id "role.id",
+  r.r_name "role.name",
+  r.r_key "role.key",
+  r.r_status "role.status",
+  r.r_description "role.description",
+  r.r_create_time "role.createTime",
+  r.r_update_time "role.updateTime",
+  i.u_sex "userInfo.sex",
+  i.u_birthday "userInfo.birthday",
+  i.u_telephone "userInfo.telephone",
+  i.u_email "userInfo.email",
+  i.u_address "userInfo.address"
+  FROM tb_user u JOIN tb_role_user ru ON u.u_id = ru.u_id JOIN tb_role r ON ru.r_id = r.r_id JOIN tb_user_info i ON u.u_id = i.u_id
+  where u.u_id = ${id}
+   -->
+  </select>
+  <insert id="insert" parameterType="com.guyu.ssm1.user.model.UserEntity" useGeneratedKeys="true" keyProperty="id">
+    insert ignore into tb_user (
+      username,
+      password,
+      sex,
+      birthday,
+      telephone,
+      email,
+      creatime,
+      updatetime
+    )
+    values (
+      #{username},
+      #{password},
+      #{sex},
+      #{birthday},
+      #{telephone},
+      #{email},
+      #{creatorName},
+      #{createTime}
+    )
+  </insert>
+  <insert id="insertUserRole" parameterType="com.guyu.ssm1.user.model.UserEntity" useGeneratedKeys="true" keyProperty="role.id">
+    insert ignore into tb_user_role (
+    user_id,
+    role_id,
+    )
+    values (
+    #{user_id},
+    #{role.id},
+    )
+  </insert>
+  <update id="update" parameterType="com.guyu.ssm1.user.model.UserEntity" flushCache="true">
+    update tb_user
+    <set>
+      username = #{username},
+      <if test="password != null  and !&quot;&quot;.equals(password.trim())">
+        password = #{password},
+      </if>
+      <if test="sex != null">
+        sex = #{sex},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday},
+      </if>
+      <if test="telephone != null">
+        telephone = #{telephone},
+      </if>
+      <if test="email != null  and !&quot;&quot;.equals(password.trim())">
+        email = #{email},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateUserRole" parameterType="com.guyu.ssm1.user.model.UserEntity" flushCache="true">
+    update tb_ruser_role
+    set role_id = #{role.id}
+    where user_id = #{id}
+  </update>
+  <delete id="deleteBatchById" parameterType="list">
+    <![CDATA[
+       delete from tb_user where id in
+    	]]>
+    <foreach collection="list" item = "id" open="(" separator="," close=")">
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteBatchUserRole" parameterType="list">
+    <![CDATA[
+       delete from tb_user_role where user_id in
+    	]]>
+    <foreach collection="list" item = "id" open="(" separator="," close=")">
+      #{id}
+    </foreach>
+  </delete>
+</mapper>
