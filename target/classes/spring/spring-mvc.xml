@@ -14,7 +14,7 @@
     <context:component-scan base-package="com"/>
 
     <!-- 开启注解 -->
-    <mvc:annotation-driven/>
+   <!-- <mvc:annotation-driven/>-->
     <!-- 19 配置静态资源，直接映射到对应的文件夹，不被DispatcherServlet处理，3.04新增功能，需要重新设置spring-mvc-3.0.xsd -->
 
     <!-- 当在web.xml中配置了无需再配置
@@ -24,7 +24,17 @@
     </servlet-mapping>
 
      -->
-    <mvc:resources mapping="/resources/**" location="/resources/" />
+    <mvc:resources mapping="/resources/**" location="/resources/"/>
+
+
+    <!--配置拦截器, 多个拦截器,顺序执行 -->
+    <mvc:interceptors>
+
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+                <bean class="com.guyu.ssm1.interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
     <!-- <mvc:default-servlet-handler/> -->
 
