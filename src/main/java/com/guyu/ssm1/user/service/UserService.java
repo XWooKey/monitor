@@ -12,7 +12,7 @@ import java.util.Map;
 public interface UserService {
     public List<UserEntity> queryListByPage(Map<String, Object> parameter);
 
-    public UserEntity findByName(String accountName);
+    public List<UserEntity> findByName(String accountName);
 
     public int insert(UserEntity userEntity);
 

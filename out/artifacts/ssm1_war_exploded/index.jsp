@@ -21,7 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 <script type="text/javascript">
        function fullwin() {
-           window.location.href ="<%=basePath%>resources/index.jsp";
+           window.location.href ="<%=basePath%>index.html";
            return false;
        }
     </script>

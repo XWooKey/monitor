@@ -105,7 +105,7 @@ public interface BaseService<T,ID extends Serializable> {
      * @return	T	返回查询的对象
      * @throws
      */
-    public T findByName(String name);
+    public List<T> findByName(String name);
     /**
      * 
      * @Title: queryListAll

@@ -22,6 +22,9 @@ import com.guyu.ssm1.exception.ServiceException;
  */
 public class AbstractService<T, ID extends Serializable> implements BaseService<T, ID> {
 
+	
+	
+	
 	private BaseMapper<T, ID> baseMapper;
 	
 	public void setBaseMapper(BaseMapper<T, ID> baseMapper) {
@@ -112,7 +115,7 @@ public class AbstractService<T, ID extends Serializable> implements BaseService<
 	}
 
 	@Override
-	public T findByName(String name) {
+	public List<T> findByName(String name) {
 		return baseMapper.findByName(name);
 	}
 

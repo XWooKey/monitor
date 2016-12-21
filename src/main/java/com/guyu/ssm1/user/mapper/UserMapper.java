@@ -11,7 +11,7 @@ import java.util.List;
  */
 
 
-public interface UserMapper extends BaseMapper{
+public interface UserMapper extends BaseMapper<UserEntity,Long>{
     public int insertUserRole(UserEntity userEntity);
 
     public int updateUserRole(UserEntity userEntity);

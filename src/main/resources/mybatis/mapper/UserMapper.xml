@@ -42,15 +42,15 @@
       u.birthday,
       u.telephone,
       u.email,
-      u.creatime,
+      u.createtime,
       u.updatetime,
       r.id,
       r.name,
       r.description
     FROM tb_user u JOIN tb_user_role ur ON u.id = ur.user_id JOIN tb_role r ON ur.role_id = r.id
     <where>
-      <if test="username != null and !&quot;&quot;.equals(username.trim())">
-        and u.username = #{username}
+      <if test="name != null and !''.equals(name.trim())">
+        and u.username = #{name}
       </if>
     </where>
   </select>

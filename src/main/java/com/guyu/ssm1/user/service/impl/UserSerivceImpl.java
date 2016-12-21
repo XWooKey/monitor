@@ -5,10 +5,12 @@ import com.guyu.ssm1.exception.ServiceException;
 import com.guyu.ssm1.user.mapper.UserMapper;
 import com.guyu.ssm1.user.model.UserEntity;
 import com.guyu.ssm1.user.service.UserService;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import javax.annotation.Resource;
+
 import java.util.List;
 
 
@@ -21,7 +23,15 @@ public class UserSerivceImpl extends AbstractService<UserEntity,Long> implements
     @Resource
     private UserMapper userMapper;
 
+    
+	@Autowired
+	public void setBaseMapper() {
+		super.setBaseMapper(userMapper);
+	}
+    
+    
     /**
+     * 
      * 重写用户插入，逻辑：
      * 1、插入用户
      * 2、插入用户和角色的对应关系

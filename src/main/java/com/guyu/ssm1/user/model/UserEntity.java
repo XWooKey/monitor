@@ -23,6 +23,7 @@ public class UserEntity extends BaseEntity {
     @Override
     public String toString() {
         return "UserEntity{" +
+        		"id='" + id + '\'' +
                 "username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", sex='" + sex + '\'' +

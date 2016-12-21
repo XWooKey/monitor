@@ -15,15 +15,19 @@
         This setting forces generated keys to be used if set to true,
          as some drivers deny compatibility but still work -->
         <setting name="useGeneratedKeys" value="true"/>
+        <setting name="logImpl" value="STDOUT_LOGGING" />
+        
     </settings>
 
     <!-- Continue going here -->
     <typeAliases>
         <typeAlias alias="role" type="com.guyu.ssm1.role.model.RoleEntity"/>
         <typeAlias alias="user" type="com.guyu.ssm1.user.model.UserEntity"/>
-
+		<typeAlias alias="resources" type="com.guyu.ssm1.resources.model.ResourcesEntity"/>
     </typeAliases>
     <mappers>
         <mapper resource="mybatis/mapper/UserMapper.xml" />
+        <mapper resource="mybatis/mapper/RoleMapper.xml" />
+        <mapper resource="mybatis/mapper/ResourcesMapper.xml" />
     </mappers>
 </configuration>

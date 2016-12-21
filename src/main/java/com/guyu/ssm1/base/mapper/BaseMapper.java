@@ -25,7 +25,7 @@ public interface BaseMapper<T,ID extends Serializable> {
  
     public T findById(@Param("id") String id);
  
-    public T findByName(@Param("name") String name);
+    public List<T> findByName(@Param("name") String name);
  
     public List<T> queryListAll(Map<String, Object> parameter);
     

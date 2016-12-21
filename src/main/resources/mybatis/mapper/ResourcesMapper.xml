@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guyu.ssm1.resources.mapper.ResourcesMapper">
+	<sql id="roleAttributes">
+		id,
+		parent_id,
+		has_child,
+		type,
+		source_url,
+		key,
+		name,
+		icon,
+		description
+	</sql>
+
+	<resultMap id="resourcesMap" type="com.guyu.ssm1.resources.model.ResourcesEntity">
+		<id property="id" column="id" />
+		<result property="parent_id" column="parent_id" />
+		<result property="has_child" column="has_child" />
+		<result property="type" column="type" />
+		<result property="source_url" column="source_url" />
+		<result property="key" column="key" />
+		<result property="name" column="name" />
+		<result property="icon" column="icon" />
+		<result property="description" column="r_description" />
+	</resultMap>
+
+
+	<select id="findByUserId" parameterType="com.guyu.ssm1.user.model.UserEntity"
+		resultMap="resourcesMap" flushCache="true" useCache="true">
+		select
+		tr.id,
+		tr.parent_id,
+		tr.has_child,
+		tr.type,
+		tr.source_url,
+		tr.key,
+		tr.name,
+		tr.icon,
+		tr.description
+		from tb_user tu
+		left join tb_user_role tur on tu.id=tur.user_id
+		LEFT JOIN tb_role_resource trr On trr.role_id=tur.role_id
+		left join tb_resource tr on tr.id = trr.resource_id
+		<where>
+			<if test="id != null">
+				tu.id=#{id}
+			</if>
+		</where>
+	</select>
+
+
+</mapper>
